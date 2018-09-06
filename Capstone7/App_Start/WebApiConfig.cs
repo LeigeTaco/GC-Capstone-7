@@ -10,14 +10,22 @@ namespace Capstone7
         public static void Register(HttpConfiguration config)
         {
             // Web API configuration and services
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
 
             // Web API routes
             config.MapHttpAttributeRoutes();
-
+            //  {id}/{cat}/{sup}/{max}/{current}
             config.Routes.MapHttpRoute(
                 name: "DefaultApi",
-                routeTemplate: "api/{controller}/{id}",
-                defaults: new { id = RouteParameter.Optional }
+                routeTemplate: "api/{controller}/{action}/results"
+                //defaults: new
+                //{
+                //    id = RouteParameter.Optional,
+                //    cat = RouteParameter.Optional,
+                //    sup = RouteParameter.Optional,
+                //    max = RouteParameter.Optional,
+                //    current = RouteParameter.Optional
+                //}
             );
         }
     }
